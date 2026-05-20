@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaverim of Middlesex County</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMYTCZT0R3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MMYTCZT0R3');</script>
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #1a1a1a; font-size: 15px; line-height: 1.6; }
+
+/* ── TOPBAR ── */
+.topbar {
+  background: #1a1a1a;
+  padding: 10px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: 101;
+}
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+.topbar-left img { width: 38px; height: 38px; border-radius: 5px; object-fit: contain; }
+.topbar-name { color: #fff; font-size: 14px; font-weight: 600; line-height: 1.2; }
+.topbar-name span { display: block; font-size: 11px; color: rgba(255,255,255,0.45); font-weight: 400; margin-top: 1px; }
+.topbar-phone { color: #b8dcea; font-size: 13px; font-weight: 500; text-decoration: none; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.topbar-phone:hover { color: #fff; }
+.topbar-phone i { font-size: 13px; }
+
+/* ── NAV ── */
+.site-nav {
+  background: #fff;
+  border-bottom: 1px solid #e8eaed;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 0;
+  position: sticky;
+  top: 58px;
+  z-index: 100;
+  overflow-x: auto;
+  scrollbar-width: none;
+  margin: 0;
+}
+.site-nav::-webkit-scrollbar { display: none; }
+.nav-item {
+  padding: 15px 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.15s, border-color 0.15s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  flex-shrink: 0;
+}
+.nav-item:hover { color: #1a1a1a; }
+.nav-item.active { color: #4a7fa5; border-bottom-color: #4a7fa5; font-weight: 500; }
+.nav-call {
+  margin-left: auto;
+  flex-shrink: 0;
+  background: #4a7fa5;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.nav-call:hover { background: #3a6585; }
+.nav-call i { font-size: 13px; }
+
+/* ── PAGES ── */
+.page { display: none; }
+.page.active { display: block; }
+
+/* ── HERO ── */
+.hero {
+  background: #fff;
+  border-bottom: 1px solid #e8eaed;
+  padding: 48px 28px 44px;
+}
+.hero-inner { max-width: 780px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #eaf4f8; color: #185fa5;
+  font-size: 12px; font-weight: 500;
+  padding: 5px 12px; border-radius: 20px;
+  margin-bottom: 18px;
+}
+.hero-badge i { font-size: 13px; }
+.hero h1 { font-size: 30px; font-weight: 600; color: #1a1a1a; line-height: 1.25; margin-bottom: 12px; }
+.hero p { font-size: 15px; color: #555; line-height: 1.7; max-width: 520px; margin-bottom: 24px; }
+.hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-primary { background: #4a7fa5; color: #fff; padding: 11px 24px; border-radius: 7px; font-size: 14px; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: background 0.15s; border: none; cursor: pointer; }
+.btn-primary:hover { background: #3a6585; }
+.btn-secondary { background: #fff; color: #1a1a1a; padding: 11px 24px; border-radius: 7px; font-size: 14px; font-weight: 400; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid #d0d5dd; transition: background 0.15s; cursor: pointer; }
+.btn-secondary:hover { background: #f5f7fa; }
+
+/* ── MAIN WRAPPER ── */
+.main { max-width: 860px; margin: 36px auto; padding: 0 24px 60px; }
+.main-wide { max-width: 1020px; margin: 36px auto; padding: 0 24px 60px; }
+.main-narrow { max-width: 660px; margin: 36px auto; padding: 0 24px 60px; }
+
+/* ── SECTION LABEL ── */
+.section-label { font-size: 11px; font-weight: 600; color: #999; text-transform: uppercase; letter-spacing: 0.9px; margin-bottom: 16px; }
+
+/* ── CARD ── */
+.card {
+  background: #fff;
+  border: 1px solid #e8eaed;
+  border-radius: 10px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+}
+.card h2 { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 12px; }
+.card p { color: #555; line-height: 1.75; margin-bottom: 12px; }
+.card p:last-child { margin-bottom: 0; }
+
+/* ── SERVICE GRID ── */
+.service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 10px; margin-top: 4px; }
+.service-item {
+  background: #f8fbfd;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: border-color 0.15s;
+}
+.service-item:hover { border-color: #4a7fa5; }
+.service-item i { font-size: 16px; color: #4a7fa5; flex-shrink: 0; width: 18px; text-align: center; }
+.service-item svg { flex-shrink: 0; }
+.service-cta {
+  grid-column: 1 / -1;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 4px;
+}
+.service-cta p { font-size: 12px; color: rgba(255,255,255,0.5); margin: 0 0 3px 0; }
+.service-cta strong { font-size: 14px; color: #fff; font-weight: 500; }
+.service-cta a { background: #4a7fa5; color: #fff; padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 500; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; transition: background 0.15s; }
+.service-cta a:hover { background: #3a6585; }
+
+/* ── DONATE ── */
+.donate-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-top: 20px; }
+.donate-method { background: #f8fbfd; border: 1px solid #e8eaed; border-radius: 9px; padding: 22px 20px; text-align: center; }
+.donate-method img { max-width: 100px; height: 32px; object-fit: contain; display: block; margin: 0 auto 12px; }
+.donate-method .method-title { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+.donate-method .method-detail { font-size: 12px; color: #4a7fa5; font-weight: 500; margin-bottom: 14px; }
+.donate-btn { display: inline-flex; align-items: center; gap: 7px; background: #4a7fa5; color: #fff; padding: 10px 22px; border-radius: 7px; font-size: 13px; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: background 0.15s; }
+.donate-btn:hover { background: #3a6585; }
+.donate-hero { text-align: center; padding: 8px 0 24px; }
+.donate-hero h2 { font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+.donate-hero p { font-size: 14px; color: #555; max-width: 400px; margin: 0 auto 20px; }
+.tax-note { text-align: center; font-size: 12px; color: #999; margin-top: 24px; }
+
+/* ── MODAL ── */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+.modal-overlay.open { display: flex; }
+.modal-box { background: #fff; border-radius: 12px; max-width: 420px; width: 100%; padding: 28px; text-align: center; position: relative; max-height: 90vh; overflow-y: auto; border-top: 4px solid #4a7fa5; }
+.modal-close { position: absolute; top: 16px; right: 18px; font-size: 22px; cursor: pointer; color: #999; background: none; border: none; line-height: 1; }
+.modal-close:hover { color: #333; }
+.modal-box img.zeffy-logo { max-width: 120px; display: block; margin: 0 auto 16px; }
+.modal-box h3 { font-size: 18px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px; }
+.modal-box p { font-size: 14px; color: #555; line-height: 1.65; margin-bottom: 14px; }
+.modal-box img.tip-img { width: 100%; max-width: 280px; border-radius: 8px; margin: 6px auto 18px; display: block; border: 1px solid #e8eaed; }
+
+/* ── SOCIAL BUTTONS ── */
+.social-links { display: flex; flex-direction: column; gap: 12px; max-width: 360px; margin: 20px auto 0; }
+.social-btn { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 14px 24px; border-radius: 8px; font-weight: 500; font-size: 14px; text-decoration: none; transition: opacity 0.15s; }
+.social-btn:hover { opacity: 0.88; }
+.social-btn.whatsapp { background: #25D366; color: #fff; }
+.social-btn.instagram { background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); color: #fff; }
+.social-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+/* ── VOLUNTEER ── */
+.role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 8px; }
+.role-card { background: #f8fbfd; border: 1px solid #e8eaed; border-radius: 9px; padding: 24px 22px; transition: border-color 0.15s; }
+.role-card:hover { border-color: #4a7fa5; }
+.role-icon { font-size: 30px; margin-bottom: 12px; }
+.role-card h3 { font-size: 16px; font-weight: 600; color: #1a1a1a; margin-bottom: 7px; }
+.role-card p { font-size: 13px; color: #666; line-height: 1.65; margin-bottom: 16px; }
+.role-card a { display: inline-flex; align-items: center; gap: 6px; background: #4a7fa5; color: #fff; padding: 9px 20px; border-radius: 6px; font-size: 13px; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+.role-card a:hover { background: #3a6585; }
+
+/* ── MAP ── */
+.map-embed { width: 100%; height: 440px; border: none; border-radius: 9px; display: block; margin-top: 4px; }
+.map-link { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; padding: 10px 22px; background: #4a7fa5; color: #fff; border-radius: 6px; font-size: 13px; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+.map-link:hover { background: #3a6585; }
+
+/* ── DIRECTORY ── */
+.search-wrap { margin-bottom: 20px; }
+.search-wrap input { width: 100%; padding: 11px 18px; border: 1px solid #d0d5dd; border-radius: 8px; font-size: 14px; outline: none; background: #fff; color: #1a1a1a; transition: border-color 0.15s; }
+.search-wrap input:focus { border-color: #4a7fa5; box-shadow: 0 0 0 3px rgba(74,127,165,0.1); }
+.dir-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.dir-card { background: #fff; border: 1px solid #e8eaed; border-radius: 9px; padding: 16px 16px 14px; transition: border-color 0.15s, box-shadow 0.15s; }
+.dir-card:hover { border-color: #b8dcea; box-shadow: 0 2px 8px rgba(74,127,165,0.1); }
+.dir-card.highlight { border-color: #4a7fa5; background: #f0f7fc; }
+.dir-card h3 { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+.dir-card .phone { font-size: 12px; color: #888; margin-bottom: 12px; }
+.dir-btn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; background: #4a7fa5; color: #fff; border-radius: 5px; font-size: 12px; font-weight: 500; text-decoration: none; transition: background 0.15s; }
+.dir-btn:hover { background: #3a6585; }
+.no-results { text-align: center; color: #aaa; font-size: 14px; padding: 40px 0; display: none; }
+
+/* ── PRIVACY ── */
+.toc { background: #f8fbfd; border-left: 3px solid #4a7fa5; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 28px; }
+.toc h3 { font-size: 11px; font-weight: 600; color: #4a7fa5; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
+.toc ol { padding-left: 18px; margin: 0; }
+.toc li { font-size: 13px; color: #555; margin-bottom: 4px; }
+.toc a { color: #4a7fa5; text-decoration: none; }
+.toc a:hover { text-decoration: underline; }
+.policy-sec { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid #f0f2f5; }
+.policy-sec:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.policy-sec h3 { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 10px; }
+.policy-sec p, .policy-sec li { font-size: 14px; color: #555; line-height: 1.75; }
+.policy-sec ul { padding-left: 20px; margin-top: 6px; }
+.policy-sec li { margin-bottom: 4px; }
+.policy-sec a { color: #4a7fa5; }
+.policy-table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+.policy-table th { background: #4a7fa5; color: #fff; padding: 10px 12px; text-align: left; font-weight: 500; }
+.policy-table td { padding: 9px 12px; border-bottom: 1px solid #f0f2f5; color: #555; vertical-align: top; }
+.policy-table tr:nth-child(even) td { background: #f8fbfd; }
+.contact-box { background: #f8fbfd; border: 1px solid #e8eaed; border-radius: 8px; padding: 18px 20px; font-size: 14px; color: #333; line-height: 1.8; }
+.contact-box a { color: #4a7fa5; text-decoration: none; }
+.page-heading { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 20px; }
+
+/* ── FOOTER ── */
+.site-footer { background: #1a1a1a; color: rgba(255,255,255,0.4); text-align: center; padding: 20px 24px; font-size: 12px; }
+.site-footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .topbar { padding: 10px 16px; }
+  .topbar-name { font-size: 12px; }
+  .site-nav { padding: 0 12px; }
+  .nav-item { padding: 13px 10px; font-size: 12px; }
+  .hero { padding: 32px 20px 28px; }
+  .hero h1 { font-size: 22px; }
+  .main, .main-wide, .main-narrow { padding: 0 16px 50px; margin-top: 24px; }
+  .card { padding: 20px 18px; }
+  .service-grid { grid-template-columns: 1fr 1fr; }
+  .role-grid { grid-template-columns: 1fr; }
+  .dir-grid { grid-template-columns: 1fr; }
+  .donate-methods { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <img src="https://i.ibb.co/WWx03S58/updated-logo.png" alt="Chaverim Logo">
+    <div class="topbar-name">Chaverim of Middlesex County <span>Emergency Volunteer Services</span></div>
+  </div>
+  <a class="topbar-phone" href="tel:7328443577"><i class="fa-solid fa-phone"></i>732-844-3577</a>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <button class="nav-item active" onclick="showPage('home',this)">Home</button>
+  <button class="nav-item" onclick="showPage('donate',this)">Donate</button>
+  <button class="nav-item" onclick="showPage('news',this)">News</button>
+  <button class="nav-item" onclick="showPage('volunteer',this)">Volunteer</button>
+  <button class="nav-item" onclick="showPage('coverage',this)">Coverage Area</button>
+  <button class="nav-item" onclick="showPage('directory',this)">Directory</button>
+  <button class="nav-item" onclick="showPage('privacy',this)">Privacy Policy</button>
+  <a class="nav-call" href="tel:7328443577"><i class="fa-solid fa-phone"></i>Call Now</a>
+</nav>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- HOME                                  -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge"><i class="fa-solid fa-clock"></i>Available 24 hours a day</div>
+      <h1>Friends you can count on,<br>any time of day or night.</h1>
+      <p>Chaverim of Middlesex County is a volunteer emergency services organization — always ready to help with roadside assistance, lockouts, flooding, and more. Free of charge.</p>
+      <div class="hero-btns">
+        <a class="btn-primary" href="tel:7328443577"><i class="fa-solid fa-phone"></i>Call 732-844-3577</a>
+        <button class="btn-secondary" onclick="showPage('donate', document.querySelectorAll('.nav-item')[1])"><i class="fa-solid fa-heart"></i>Donate</button>
+        <button class="btn-secondary" onclick="showPage('volunteer', document.querySelectorAll('.nav-item')[3])"><i class="fa-solid fa-hand-holding-heart"></i>Volunteer With Us</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <div class="section-label">About Us</div>
+      <p>Chaverim of Middlesex County, NJ is a volunteer services organization comprised of a dedicated team of volunteers. Dispatchers and service members are standing by <strong>24 hours a day</strong> to help take care of the needs of our community.</p>
+      <p>From jump-starts and flat tires to lockouts, flooding, and everything in between. Not sure if we can help? Give us a call.</p>
+    </div>
+
+    <div class="card">
+      <div class="section-label">How we can help</div>
+      <div class="service-grid">
+        <div class="service-item"><i class="fa-solid fa-car-battery"></i>Dead Batteries</div>
+        <div class="service-item">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="13" stroke="#4a7fa5" stroke-width="4.5"/>
+            <circle cx="16" cy="16" r="5.5" fill="#4a7fa5"/>
+            <circle cx="16" cy="16" r="2.5" fill="white"/>
+            <line x1="16" y1="10.5" x2="16" y2="6" stroke="#4a7fa5" stroke-width="2"/>
+            <line x1="16" y1="26" x2="16" y2="21.5" stroke="#4a7fa5" stroke-width="2"/>
+            <line x1="10.5" y1="16" x2="6" y2="16" stroke="#4a7fa5" stroke-width="2"/>
+            <line x1="26" y1="16" x2="21.5" y2="16" stroke="#4a7fa5" stroke-width="2"/>
+            <line x1="12.3" y1="12.3" x2="9" y2="9" stroke="#4a7fa5" stroke-width="2"/>
+            <line x1="23" y1="23" x2="19.7" y2="19.7" stroke="#4a7fa5" stroke-width="2"/>
+            <line x1="19.7" y1="12.3" x2="23" y2="9" stroke="#4a7fa5" stroke-width="2"/>
+            <line x1="9" y1="23" x2="12.3" y2="19.7" stroke="#4a7fa5" stroke-width="2"/>
+          </svg>
+          Flat Tires
+        </div>
+        <div class="service-item"><i class="fa-solid fa-gas-pump"></i>Out of Gas</div>
+        <div class="service-item"><i class="fa-solid fa-key"></i>Car Lockouts</div>
+        <div class="service-item"><i class="fa-solid fa-house-lock"></i>House Lockouts</div>
+        <div class="service-item"><i class="fa-solid fa-water"></i>Flooding</div>
+        <div class="service-item"><i class="fa-solid fa-tree"></i>Post-Storm Cleanup</div>
+        <div class="service-item"><i class="fa-solid fa-temperature-half"></i>Portable Heater &amp; A/C Gemach</div>
+        <div class="service-item"><i class="fa-solid fa-bug"></i>Pest Removal</div>
+      </div>
+      <div class="service-cta">
+        <div><p>Not sure if we can help?</p><strong>Give us a call.</strong></div>
+        <a href="tel:7328443577"><i class="fa-solid fa-phone"></i>Call Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- DONATE                                -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-donate" class="page">
+  <div class="main-narrow">
+    <div class="donate-hero">
+      <h2>Support Our Mission</h2>
+      <p>Your donation helps us respond 24/7 to emergencies in our community — completely free of charge to those we serve.</p>
+      <button class="donate-btn" onclick="openModal()"><i class="fa-solid fa-credit-card"></i>Donate Online via Credit Card</button>
+    </div>
+
+    <div class="donate-methods">
+      <div class="donate-method">
+        <img src="https://cdn.worldvectorlogo.com/logos/zelle-1.svg" alt="Zelle">
+        <div class="method-title">Donate via Zelle</div>
+        <div class="method-detail">chaverimmc@gmail.com</div>
+      </div>
+      <div class="donate-method">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        <div class="method-title">Amazon Wishlist</div>
+        <div class="method-detail">View our registry</div>
+        <a class="donate-btn" href="https://www.amazon.com/registries/gl/guest-view/X5LB2KBWYW5A" target="_blank"><i class="fa-brands fa-amazon"></i>Open Registry</a>
+      </div>
+    </div>
+
+    <div class="tax-note">
+      Chaverim of Middlesex County is a 501(c)(3) nonprofit &nbsp;·&nbsp; Tax ID: 82-3504252
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- NEWS                                  -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-news" class="page">
+  <div class="main-narrow">
+    <div class="card" style="text-align:center;">
+      <div class="section-label">Stay Connected</div>
+      <h2 style="margin-bottom:8px;">Latest News &amp; Updates</h2>
+      <p style="max-width:380px;margin:0 auto;">Follow us for real-time updates, community alerts, and news from Chaverim of Middlesex County.</p>
+      <div class="social-links">
+        <a class="social-btn whatsapp"
+           href="https://api.whatsapp.com/send/?phone=7328443577&text=Please+add+me+to+the+Chaverim+of+Middlesex+County+status+for+local+updates+and+alerts.&type=phone_number&app_absent=0"
+           target="_blank">
+          <svg viewBox="0 0 32 32" fill="white"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.668 4.61 1.832 6.5L4 29l7.75-1.813A12.94 12.94 0 0 0 16 28c6.627 0 12-5.373 12-12S22.627 3 16 3zm5.29 14.53c-.29-.14-1.7-.84-1.96-.93-.27-.1-.46-.14-.65.14-.2.29-.75.93-.92 1.12-.17.2-.34.22-.63.07-.29-.14-1.22-.45-2.33-1.43-.86-.77-1.44-1.71-1.61-2-.17-.29-.02-.44.13-.59.13-.13.29-.34.43-.51.15-.17.2-.29.29-.48.1-.2.05-.37-.02-.52-.07-.14-.65-1.57-.9-2.15-.23-.56-.48-.49-.65-.5l-.55-.01c-.19 0-.5.07-.76.37-.26.29-1 1-.97 2.43.02 1.43 1.06 2.82 1.21 3.01.15.2 2.08 3.18 5.04 4.46.7.3 1.25.48 1.67.62.7.22 1.34.19 1.84.12.56-.08 1.7-.7 1.94-1.37.24-.67.24-1.25.17-1.37-.07-.12-.26-.19-.55-.34z"/></svg>
+          Join Our WhatsApp Status
+        </a>
+        <a class="social-btn instagram" href="https://www.instagram.com/chaverim_of_middlesex_county/" target="_blank">
+          <svg viewBox="0 0 32 32" fill="white"><path d="M16 6.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85 0 3.2-.01 3.58-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07-3.2 0-3.58-.01-4.85-.07-3.26-.15-4.77-1.7-4.92-4.92C6.17 19.58 6.16 19.2 6.16 16c0-3.2.01-3.58.07-4.85.15-3.23 1.67-4.77 4.92-4.92 1.27-.06 1.65-.07 4.85-.07zM16 4c-3.26 0-3.67.01-4.95.07C6.7 4.27 4.27 6.7 4.07 11.05 4.01 12.33 4 12.74 4 16c0 3.26.01 3.67.07 4.95.2 4.36 2.62 6.78 6.98 6.98C12.33 27.99 12.74 28 16 28s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95 0-3.26-.01-3.67-.07-4.95-.2-4.35-2.62-6.78-6.98-6.98C19.67 4.01 19.26 4 16 4zm0 5.84a6.16 6.16 0 1 0 0 12.32A6.16 6.16 0 0 0 16 9.84zM16 20a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg>
+          Follow Us on Instagram
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- VOLUNTEER                             -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-volunteer" class="page">
+  <div class="main-narrow">
+    <div class="card">
+      <div class="section-label">Get Involved</div>
+      <h2 style="margin-bottom:8px;">Become a Volunteer</h2>
+      <p>Join our dedicated team and make a difference in your community. We have two ways to serve:</p>
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-icon">🚗</div>
+          <h3>Responder</h3>
+          <p>Go out to community members in need — jump-starts, lockouts, flat tires, and more.</p>
+          <a href="https://form.jotform.com/242810707763155" target="_blank"><i class="fa-solid fa-arrow-right"></i>Apply Now</a>
+        </div>
+        <div class="role-card">
+          <div class="role-icon">📞</div>
+          <h3>Dispatcher</h3>
+          <p>Coordinate our team remotely — receive calls, assess situations, dispatch the right help.</p>
+          <a href="https://form.jotform.com/261000648691151" target="_blank"><i class="fa-solid fa-arrow-right"></i>Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- COVERAGE AREA                         -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-coverage" class="page">
+  <div class="main">
+    <div class="card">
+      <div class="section-label">Where We Serve</div>
+      <h2 style="margin-bottom:8px;">Our Coverage Area</h2>
+      <p>We proudly serve Middlesex County and surrounding communities. See our full coverage area on the interactive map below.</p>
+      <iframe class="map-embed"
+        src="https://www.google.com/maps/d/embed?mid=1jffwSDCWk7hW-G0VCp1tQuWk994K1GY&ll=40.48604785696414,-74.40037898626734&z=12"
+        allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Chaverim of Middlesex County Service Area">
+      </iframe>
+      <a class="map-link"
+         href="https://www.google.com/maps/d/viewer?mid=1jffwSDCWk7hW-G0VCp1tQuWk994K1GY"
+         target="_blank"><i class="fa-solid fa-up-right-from-square"></i>Open Full Map</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- DIRECTORY                             -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-directory" class="page">
+  <div class="main-wide">
+    <div class="section-label" style="margin-bottom:12px;">Chaverim Worldwide</div>
+    <div class="search-wrap">
+      <input type="text" id="dir-search" placeholder="Search by city or region…" oninput="filterDirectory()">
+    </div>
+    <p class="no-results" id="noResults">No results found.</p>
+    <div class="dir-grid" id="directory">
+      <div class="dir-card"><h3>Chaverim of Antwerp, Belgium</h3><p class="phone">03-808-0424</p><a href="tel:038080424" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Baltimore, Maryland</h3><p class="phone">410-486-9000</p><a href="tel:4104869000" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Bergen County, NJ</h3><p class="phone">201-800-4357</p><a href="tel:2018004357" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Bloomingburg, NY</h3><p class="phone">718-431-8181</p><a href="tel:7184318181" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Boro Park, NY</h3><p class="phone">718-431-8181</p><a href="tel:7184318181" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Boston, Massachusetts</h3><p class="phone">617-870-4550</p><a href="tel:6178704550" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Brooklyn, NY</h3><p class="phone">718-431-8181</p><a href="tel:7184318181" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Cherry Hill, NJ</h3><p class="phone">856-295-1914</p><a href="tel:8562951914" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Chicago, Illinois</h3><p class="phone">773-556-4357</p><a href="tel:7735564357" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Cincinnati, Ohio</h3><p class="phone">513-239-6922</p><a href="tel:5132396922" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Cleveland, Ohio</h3><p class="phone">216-455-0202</p><a href="tel:2164550202" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Crown Heights, NY</h3><p class="phone">718-222-1800</p><a href="tel:7182221800" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Dallas, Texas</h3><p class="phone">214-814-0109</p><a href="tel:2148140109" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Denver, Colorado</h3><p class="phone">303-591-5794</p><a href="tel:3035915794" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Detroit, Michigan</h3><p class="phone">248-658-8111</p><a href="tel:2486588111" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Far Rockaway / 5 Towns</h3><p class="phone">718-337-1800</p><a href="tel:7183371800" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Flatbush, NY</h3><p class="phone">718-431-8181</p><a href="tel:7184318181" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Fleischmanns, NY</h3><p class="phone">845-444-2666</p><a href="tel:8454442666" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Gateshead, UK</h3><p class="phone">44-191-646-0191</p><a href="tel:441916460191" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Golders Green, London, UK</h3><p class="phone">0-300-070-0999</p><a href="tel:03000700999" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Hollywood, Florida</h3><p class="phone">945-998-2648</p><a href="tel:9459982648" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Houston, Texas</h3><p class="phone">281-800-8235</p><a href="tel:2818008235" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Israel</h3><p class="phone">1-2-3-0</p><a href="tel:1230" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Jersey City, NJ</h3><p class="phone">201-472-3608</p><a href="tel:2014723608" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Jersey Shore, NJ</h3><p class="phone">732-903-5867</p><a href="tel:7329035867" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Kiryas Joel, NY</h3><p class="phone">845-782-3111</p><a href="tel:8457823111" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Lakewood, NJ</h3><p class="phone">732-370-2229</p><a href="tel:7323702229" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Linden, NJ</h3><p class="phone">908-777-1119</p><a href="tel:9087771119" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Los Angeles, California</h3><p class="phone">323-903-7613</p><a href="tel:3239037613" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Manchester, UK</h3><p class="phone">161-532-8292</p><a href="tel:1615328292" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Manhattan, NY</h3><p class="phone">718-431-8181</p><a href="tel:7184318181" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Melbourne, Australia</h3><p class="phone">61-3-8609-9246</p><a href="tel:61386099246" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Miami, Florida</h3><p class="phone">305-330-4030</p><a href="tel:3053304030" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card highlight"><h3>⭐ Chaverim of Middlesex County, NJ</h3><p class="phone">732-844-3577</p><a href="tel:7328443577" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Minneapolis, Minnesota</h3><p class="phone">612-930-3901</p><a href="tel:6129303901" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Montreal / Tosh, Canada</h3><p class="phone">514-990-4263</p><a href="tel:5149904263" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of NEPA – Northeastern Pennsylvania</h3><p class="phone">570-995-1470</p><a href="tel:5709951470" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of New Square, NY</h3><p class="phone">845-354-0222</p><a href="tel:8453540222" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Newark, NJ</h3><p class="phone">908-866-6166</p><a href="tel:9088666166" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Orlando, Florida</h3><p class="phone">407-308-5857</p><a href="tel:4073085857" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Paris, France</h3><p class="phone">0780-95-2222</p><a href="tel:0780952222" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Passaic, NJ</h3><p class="phone">973-447-4811</p><a href="tel:9734474811" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Philadelphia, Pennsylvania</h3><p class="phone">855-742-4876</p><a href="tel:8557424876" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Phoenix, Arizona</h3><p class="phone">480-470-1200</p><a href="tel:4804701200" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Postville, Iowa</h3><p class="phone">563-503-6664</p><a href="tel:5635036664" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Queens, NY</h3><p class="phone">718-441-0505</p><a href="tel:7184410505" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Rockland County, NY</h3><p class="phone">845-371-6333</p><a href="tel:8453716333" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Sea Gate, NY</h3><p class="phone">212-732-4283</p><a href="tel:2127324283" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Stamford Hill, London, UK</h3><p class="phone">0-208-802-4357</p><a href="tel:02088024357" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Staten Island, NY</h3><p class="phone">718-761-2428</p><a href="tel:7187612428" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Sussex County, NJ</h3><p class="phone">973-446-5586</p><a href="tel:9734465586" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Tannersville, NY</h3><p class="phone">848-224-5360</p><a href="tel:8482245360" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Toronto, Canada</h3><p class="phone">416-831-4583</p><a href="tel:4168314583" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Union City, NJ</h3><p class="phone">201-472-3608</p><a href="tel:2014723608" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Union County, NJ</h3><p class="phone">908-866-6166</p><a href="tel:9088666166" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Waterbury, Connecticut</h3><p class="phone">203-465-2125</p><a href="tel:2034652125" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of West Hartford, CT</h3><p class="phone">203-543-4878</p><a href="tel:2035434878" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Westchester, NY</h3><p class="phone">914-222-0405</p><a href="tel:9142220405" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+      <div class="dir-card"><h3>Chaverim of Williamsburg, NY</h3><p class="phone">718-431-8181</p><a href="tel:7184318181" class="dir-btn"><i class="fa-solid fa-phone"></i>Call</a></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════ -->
+<!-- PRIVACY POLICY                        -->
+<!-- ══════════════════════════════════════ -->
+<div id="page-privacy" class="page">
+  <div class="main">
+    <div class="page-heading">Privacy Policy &amp; Terms</div>
+    <div class="card">
+      <div class="toc">
+        <h3>Contents</h3>
+        <ol>
+          <li><a href="#" onclick="return false;">What information do we collect?</a></li>
+          <li><a href="#" onclick="return false;">How do we process your information?</a></li>
+          <li><a href="#" onclick="return false;">When and with whom do we share your information?</a></li>
+          <li><a href="#" onclick="return false;">How long do we keep your information?</a></li>
+          <li><a href="#" onclick="return false;">How do we keep your information safe?</a></li>
+          <li><a href="#" onclick="return false;">Do we collect information from minors?</a></li>
+          <li><a href="#" onclick="return false;">What are your privacy rights?</a></li>
+          <li><a href="#" onclick="return false;">Controls for Do-Not-Track features</a></li>
+          <li><a href="#" onclick="return false;">US residents — specific privacy rights</a></li>
+          <li><a href="#" onclick="return false;">Do we make updates to this notice?</a></li>
+          <li><a href="#" onclick="return false;">How can you contact us?</a></li>
+          <li><a href="#" onclick="return false;">How can you review, update, or delete your data?</a></li>
+        </ol>
+      </div>
+
+      <p style="font-size:14px;color:#555;line-height:1.75;margin-bottom:28px;">This Privacy Notice for <strong>Chaverim of Middlesex County</strong> describes how we collect, use, and share your personal information. Questions? Email <a href="mailto:media@chaverimmc.org" style="color:#4a7fa5;">media@chaverimmc.org</a>.</p>
+
+      <div class="policy-sec"><h3>1. What information do we collect?</h3><p>We collect personal information you voluntarily provide — primarily <strong>phone numbers</strong> when you contact us for service. We do not process sensitive personal information and do not collect information from third parties. If you make a donation, payment data is handled securely by our payment processor.</p></div>
+      <div class="policy-sec"><h3>2. How do we process your information?</h3><ul><li>To deliver and facilitate our services to you</li><li>To enable communication between users</li><li>To evaluate and improve our services and your experience</li></ul></div>
+      <div class="policy-sec"><h3>3. When and with whom do we share your information?</h3><p>We may share information only in connection with a merger, sale, or acquisition of our business. We have not sold or shared any personal information to third parties in the preceding 12 months.</p></div>
+      <div class="policy-sec"><h3>4. How long do we keep your information?</h3><p>We retain personal information no longer than <strong>1 year</strong> unless required by law. When no longer needed, we delete or anonymize the data.</p></div>
+      <div class="policy-sec"><h3>5. How do we keep your information safe?</h3><p>We have implemented appropriate technical and organizational security measures. However, no electronic transmission over the Internet can be guaranteed 100% secure.</p></div>
+      <div class="policy-sec"><h3>6. Do we collect information from minors?</h3><p>We do not knowingly collect data from children under 18. If you believe we have, please contact <a href="mailto:media@chaverimmc.org">media@chaverimmc.org</a>.</p></div>
+      <div class="policy-sec"><h3>7. What are your privacy rights?</h3><p>You may withdraw your consent to our processing of your personal information at any time by contacting us at <a href="mailto:media@chaverimmc.org">media@chaverimmc.org</a>.</p></div>
+      <div class="policy-sec"><h3>8. Controls for Do-Not-Track features</h3><p>We do not currently respond to DNT browser signals as no uniform technology standard has been finalized.</p></div>
+      <div class="policy-sec"><h3>9. US residents — specific privacy rights</h3><p>Residents of California, New Jersey, and other applicable states may have rights including access, correction, deletion, and opt-out of data sale. To exercise your rights, email <a href="mailto:media@chaverimmc.org">media@chaverimmc.org</a>.</p>
+        <table class="policy-table">
+          <tr><th>Category</th><th>Examples</th><th>Collected?</th></tr>
+          <tr><td>A. Identifiers</td><td>Name, email, IP address</td><td>No</td></tr>
+          <tr><td>B. Personal info (CA Records)</td><td>Name, contact info, financial info</td><td>Yes</td></tr>
+          <tr><td>C–L. All other categories</td><td>Biometric, geolocation, education, etc.</td><td>No</td></tr>
+        </table>
+      </div>
+      <div class="policy-sec"><h3>10. Do we make updates to this notice?</h3><p>Yes — we update this notice as needed to stay compliant with applicable laws. We encourage you to review it periodically.</p></div>
+      <div class="policy-sec"><h3>11. How can you contact us?</h3>
+        <div class="contact-box">
+          <strong>Chaverim of Middlesex County</strong><br>
+          1514 Parker Rd, Highland Park, NJ 08904<br>
+          Email: <a href="mailto:media@chaverimmc.org">media@chaverimmc.org</a><br>
+          Phone: <a href="tel:7328443577">732-844-3577</a>, ext. 151
+        </div>
+      </div>
+      <div class="policy-sec"><h3>12. How can you review, update, or delete your data?</h3><p>Contact us at <a href="mailto:media@chaverimmc.org">media@chaverimmc.org</a> to request access to, correction of, or deletion of your personal information.</p></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ZEFFY MODAL -->
+<div id="donateModal" class="modal-overlay">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <img class="zeffy-logo" src="https://www.zeffy.com/images/zeffy-logo.png" alt="Zeffy">
+    <h3>Before you continue</h3>
+    <p>We receive <strong>100% of all donations</strong>. Our payment processor relies on optional tips to operate — if you don't wish to tip, please set the tip to <strong>$0</strong>.</p>
+    <img class="tip-img" src="https://i.ibb.co/7tTXDZCH/Untitled-design-56.png" alt="Set tip to $0">
+    <button class="donate-btn" onclick="proceedDonate()" style="width:100%;justify-content:center;"><i class="fa-solid fa-credit-card"></i>Continue to Donate</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  &copy; 2025 Chaverim of Middlesex County &nbsp;·&nbsp; 501(c)(3) Nonprofit &nbsp;·&nbsp; Tax ID: 82-3504252 &nbsp;·&nbsp;
+  <a href="#" onclick="showPage('privacy', document.querySelectorAll('.nav-item')[6]); return false;">Privacy Policy</a>
+</footer>
+
+<script>
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  if (btn) btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+function filterDirectory() {
+  const q = document.getElementById('dir-search').value.toLowerCase().trim();
+  const cards = document.querySelectorAll('#directory .dir-card');
+  let visible = 0;
+  cards.forEach(c => {
+    const show = c.querySelector('h3').textContent.toLowerCase().includes(q);
+    c.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+}
+function openModal() { document.getElementById('donateModal').classList.add('open'); }
+function closeModal() { document.getElementById('donateModal').classList.remove('open'); }
+function proceedDonate() { window.open('https://www.zeffy.com/en-US/donation-form/a08f5c1e-9f95-4094-a393-662b44cce839','_blank'); }
+document.getElementById('donateModal').addEventListener('click', function(e) { if(e.target===this) closeModal(); });
+</script>
+</body>
+</html>
