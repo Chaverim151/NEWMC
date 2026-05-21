@@ -90,10 +90,12 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 
 
 @media (max-width: 600px) {
-  .topbar { padding: 10px 14px; }
+  .topbar { padding: 10px 14px; flex-wrap: wrap; gap: 8px; }
+  .topbar-left { flex: 1; }
   .topbar-name { font-size: 12px; }
   .topbar-btn { font-size: 12px; padding: 7px 12px; }
-  .topbar-btn-outline span { display: none; }
+  .topbar-btn-outline span { display: inline; }
+  .topbar-btn-outline { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.4); color: #fff; font-weight: 600; }
   .site-nav { padding: 4px 8px; top: 54px; }
   .nav-item { padding: 10px 10px; font-size: 12px; }
   .hero { padding: 28px 18px 24px; }
