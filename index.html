@@ -86,27 +86,8 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 }
 .nav-item:hover { color: #1a1a1a; }
 .nav-item.active { color: #4a7fa5; border-bottom-color: #4a7fa5; font-weight: 500; }
-.nav-call {
-  margin-left: auto;
-  flex-shrink: 0;
-  background: #4a7fa5;
-  color: #fff;
-  padding: 8px 18px;
-  border-radius: 6px;
-  font-size: 13px;
-  font-weight: 500;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: background 0.15s;
-  white-space: nowrap;
-  align-self: center;
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-.nav-call:hover { background: #3a6585; }
-.nav-call i { font-size: 13px; }
+
+
 
 @media (max-width: 600px) {
   .topbar { padding: 10px 14px; }
@@ -115,7 +96,6 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
   .topbar-btn-outline span { display: none; }
   .site-nav { padding: 4px 8px; top: 54px; }
   .nav-item { padding: 10px 10px; font-size: 12px; }
-  .nav-call { padding: 7px 14px; font-size: 12px; margin-left: auto; }
   .hero { padding: 28px 18px 24px; }
   .hero h1 { font-size: 21px; }
   .hero p { font-size: 14px; }
@@ -670,6 +650,7 @@ function saveContact() {
   a.click();
   URL.revokeObjectURL(url);
 }
+function showPage(id, btn) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
