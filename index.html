@@ -40,13 +40,12 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
   border-bottom: 1px solid #e8eaed;
   display: flex;
   align-items: center;
-  padding: 0 28px;
+  padding: 0 16px;
   gap: 0;
   position: sticky;
   top: 58px;
   z-index: 100;
-  overflow-x: auto;
-  scrollbar-width: none;
+  flex-wrap: wrap;
   margin: 0;
 }
 .site-nav::-webkit-scrollbar { display: none; }
@@ -82,9 +81,33 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
   gap: 6px;
   transition: background 0.15s;
   white-space: nowrap;
+  align-self: center;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 .nav-call:hover { background: #3a6585; }
 .nav-call i { font-size: 13px; }
+
+@media (max-width: 600px) {
+  .topbar { padding: 10px 14px; }
+  .topbar-name { font-size: 12px; }
+  .topbar-phone { font-size: 12px; }
+  .site-nav { padding: 4px 8px; top: 54px; }
+  .nav-item { padding: 10px 10px; font-size: 12px; }
+  .nav-call { padding: 7px 14px; font-size: 12px; margin-left: auto; }
+  .hero { padding: 28px 18px 24px; }
+  .hero h1 { font-size: 21px; }
+  .hero p { font-size: 14px; }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .main, .main-wide, .main-narrow { padding: 0 14px 50px; margin-top: 20px; }
+  .card { padding: 18px 16px; }
+  .service-grid { grid-template-columns: 1fr 1fr; }
+  .role-grid { grid-template-columns: 1fr; }
+  .dir-grid { grid-template-columns: 1fr; }
+  .donate-methods { grid-template-columns: 1fr; }
+  .service-cta { flex-direction: column; text-align: center; }
+}
 
 /* ── PAGES ── */
 .page { display: none; }
@@ -256,20 +279,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 .site-footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
 
 /* ── RESPONSIVE ── */
-@media (max-width: 600px) {
-  .topbar { padding: 10px 16px; }
-  .topbar-name { font-size: 12px; }
-  .site-nav { padding: 0 12px; }
-  .nav-item { padding: 13px 10px; font-size: 12px; }
-  .hero { padding: 32px 20px 28px; }
-  .hero h1 { font-size: 22px; }
-  .main, .main-wide, .main-narrow { padding: 0 16px 50px; margin-top: 24px; }
-  .card { padding: 20px 18px; }
-  .service-grid { grid-template-columns: 1fr 1fr; }
-  .role-grid { grid-template-columns: 1fr; }
-  .dir-grid { grid-template-columns: 1fr; }
-  .donate-methods { grid-template-columns: 1fr; }
-}
+/* responsive handled above */
 </style>
 </head>
 <body>
