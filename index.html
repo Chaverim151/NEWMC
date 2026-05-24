@@ -96,7 +96,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
   .topbar-btn { font-size: 12px; padding: 7px 12px; }
   .topbar-btn-outline span { display: inline; }
   .topbar-btn-outline { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.4); color: #fff; font-weight: 600; }
-  .site-nav { padding: 4px 8px; top: 54px; }
+  .site-nav { padding: 4px 8px; }
   .nav-item { padding: 10px 10px; font-size: 12px; }
   .hero { padding: 28px 18px 24px; }
   .hero h1 { font-size: 21px; }
@@ -632,6 +632,15 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 </footer>
 
 <script>
+// Dynamically set nav top to match topbar height
+function updateNavTop() {
+  const topbar = document.querySelector('.topbar');
+  const nav = document.querySelector('.site-nav');
+  if (topbar && nav) nav.style.top = topbar.offsetHeight + 'px';
+}
+window.addEventListener('load', updateNavTop);
+window.addEventListener('resize', updateNavTop);
+
 function saveContact() {
   const vcard = [
     'BEGIN:VCARD',
