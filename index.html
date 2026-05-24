@@ -28,8 +28,14 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 }
 .topbar-left { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
 .topbar-left img { width: 36px; height: 36px; border-radius: 5px; object-fit: contain; flex-shrink: 0; }
-.topbar-name { color: #fff; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar-name { color: #fff; font-size: 13px; font-weight: 600; line-height: 1.2; min-width: 0; }
 .topbar-name span { display: block; font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 400; margin-top: 1px; }
+.topbar-name .name-full { display: block; }
+.topbar-name .name-short { display: none; }
+@media (max-width: 480px) {
+  .topbar-name .name-full { display: none; }
+  .topbar-name .name-short { display: block; }
+}
 .topbar-btn {
   background: #4a7fa5;
   color: #fff;
@@ -289,7 +295,11 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 <div class="topbar">
   <div class="topbar-left">
     <img src="https://i.ibb.co/WWx03S58/updated-logo.png" alt="Chaverim Logo">
-    <div class="topbar-name">Chaverim of Middlesex County <span>Emergency Volunteer Services</span></div>
+    <div class="topbar-name">
+      <span class="name-full">Chaverim of Middlesex County</span>
+      <span class="name-short">Chaverim MC</span>
+      <span>Emergency Volunteer Services</span>
+    </div>
   </div>
   <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
     <a class="topbar-btn" href="tel:7328443577"><i class="fa-solid fa-phone"></i>732-844-3577</a>
