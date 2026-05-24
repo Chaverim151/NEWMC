@@ -16,20 +16,20 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 /* ── TOPBAR ── */
 .topbar {
   background: #1a1a1a;
-  padding: 10px 28px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 10px;
   margin: 0;
   position: sticky;
   top: 0;
   z-index: 101;
 }
-.topbar-left { display: flex; align-items: center; gap: 12px; }
-.topbar-left img { width: 38px; height: 38px; border-radius: 5px; object-fit: contain; }
-.topbar-name { color: #fff; font-size: 14px; font-weight: 600; line-height: 1.2; }
-.topbar-name span { display: block; font-size: 11px; color: rgba(255,255,255,0.45); font-weight: 400; margin-top: 1px; }
+.topbar-left { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+.topbar-left img { width: 36px; height: 36px; border-radius: 5px; object-fit: contain; flex-shrink: 0; }
+.topbar-name { color: #fff; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.topbar-name span { display: block; font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 400; margin-top: 1px; }
 .topbar-btn {
   background: #4a7fa5;
   color: #fff;
@@ -90,10 +90,8 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f7fa; color: #
 
 
 @media (max-width: 600px) {
-  .topbar { padding: 10px 14px; flex-wrap: wrap; gap: 8px; }
-  .topbar-left { flex: 1; }
-  .topbar-name { font-size: 12px; }
-  .topbar-btn { font-size: 12px; padding: 7px 12px; }
+  .topbar { padding: 8px 12px; gap: 8px; }
+  .topbar-btn { font-size: 12px; padding: 7px 11px; gap: 5px; }
   .topbar-btn-outline span { display: inline; }
   .topbar-btn-outline { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.4); color: #fff; font-weight: 600; }
   .site-nav { padding: 4px 8px; }
