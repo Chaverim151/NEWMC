@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volunteer — Chaverim of Middlesex County</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="/shared.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MMYTCZT0R3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-MMYTCZT0R3');</script>
+
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-left">
+    <img src="https://i.ibb.co/WWx03S58/updated-logo.png" alt="Chaverim Logo">
+    <div class="topbar-name">
+      <div class="name-main name-full">Chaverim of Middlesex County</div>
+      <div class="name-main name-short">Chaverim MC</div>
+      <div class="name-sub">Emergency Volunteer Services</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+    <a class="topbar-btn" href="tel:7328443577"><i class="fa-solid fa-phone"></i>732-844-3577</a>
+    <a class="topbar-btn topbar-btn-outline" href="#" onclick="saveContact();return false;" title="Save contact"><i class="fa-solid fa-address-book"></i><span>Save Contact</span></a>
+  </div>
+</div>
+<nav class="site-nav"><a class="nav-item" href="/">Home</a>
+<a class="nav-item" href="/donate.html">Donate</a>
+<a class="nav-item" href="/news.html">News</a>
+<a class="nav-item active" href="/volunteer.html">Volunteer</a>
+<a class="nav-item" href="/coverage.html">Coverage Area</a>
+<a class="nav-item" href="/directory.html">Directory</a>
+
+</nav>
+<div class="main-narrow">
+  <div class="card">
+    <div class="section-label">Get Involved</div>
+    <h2 style="margin-bottom:8px;">Become a Volunteer</h2>
+    <p>Join our dedicated team and make a difference in your community. We have two ways to serve:</p>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-icon">🚗</div>
+        <h3>Responder</h3>
+        <p>Go out to community members in need — jump-starts, lockouts, flat tires, and more.</p>
+        <a href="https://form.jotform.com/242810707763155" target="_blank"><i class="fa-solid fa-arrow-right"></i>Apply Now</a>
+      </div>
+      <div class="role-card">
+        <div class="role-icon">📞</div>
+        <h3>Dispatcher</h3>
+        <p>Coordinate our team remotely — receive calls, assess situations, dispatch the right help.</p>
+        <a href="https://form.jotform.com/261000648691151" target="_blank"><i class="fa-solid fa-arrow-right"></i>Apply Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+<footer class="site-footer">
+  &copy; 2025 Chaverim of Middlesex County &nbsp;&middot;&nbsp; 501(c)(3) Nonprofit &nbsp;&middot;&nbsp; Tax ID: 82-3504252 &nbsp;&middot;&nbsp;
+  <a href="/privacy.html">Privacy Policy</a>
+</footer>
+<script>
+function updateNavTop() {
+  const topbar = document.querySelector('.topbar');
+  const nav = document.querySelector('.site-nav');
+  if (topbar && nav) nav.style.top = topbar.offsetHeight + 'px';
+}
+window.addEventListener('load', updateNavTop);
+window.addEventListener('resize', updateNavTop);
+function saveContact() {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+  if (isMobile) {
+    const vcard = ['BEGIN:VCARD','VERSION:3.0','FN:Chaverim of Middlesex County','ORG:Chaverim of Middlesex County','TEL;TYPE=WORK,VOICE:+17328443577','EMAIL:media@chaverimmc.org','URL:https://chaverimmc.org','NOTE:Emergency Volunteer Services — Available 24/7','END:VCARD'].join('\n');
+    const blob = new Blob([vcard],{type:'text/vcard'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href=url; a.download='Chaverim-Middlesex.vcf'; a.click();
+    URL.revokeObjectURL(url);
+  } else {
+    showQRModal();
+  }
+}
+function showQRModal() {
+  const existing = document.getElementById('qr-modal');
+  if (existing) { existing.remove(); return; }
+  const overlay = document.createElement('div');
+  overlay.id = 'qr-modal';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;';
+  const qrData = encodeURIComponent('BEGIN:VCARD\nVERSION:3.0\nFN:Chaverim of Middlesex County\nORG:Chaverim of Middlesex County\nTEL;TYPE=WORK,VOICE:+17328443577\nEMAIL:media@chaverimmc.org\nURL:https://chaverimmc.org\nEND:VCARD');
+  overlay.innerHTML = '<div style="background:#fff;border-radius:14px;padding:28px 32px;text-align:center;max-width:320px;width:100%;border-top:4px solid #4a7fa5;position:relative;">' +
+    '<button onclick="document.getElementById(\'qr-modal\').remove()" style="position:absolute;top:14px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#999;">&times;</button>' +
+    '<h3 style="margin:0 0 6px;font-size:17px;font-weight:700;color:#111;">Save Our Contact</h3>' +
+    '<p style="margin:0 0 18px;font-size:13px;color:#666;">Scan with your phone to save Chaverim of Middlesex County to your contacts.</p>' +
+    '<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=' + qrData + '" style="width:180px;height:180px;border-radius:8px;border:1px solid #e8eaed;" alt="QR Code">' +
+    '<p style="margin:14px 0 0;font-size:13px;font-weight:700;color:#4a7fa5;">732-844-3577</p>' +
+    '</div>';
+  overlay.addEventListener('click', function(e){ if(e.target===this) this.remove(); });
+  document.body.appendChild(overlay);
+}
+</script>
+
+</body>
+</html>
